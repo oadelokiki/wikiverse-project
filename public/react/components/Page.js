@@ -16,6 +16,7 @@ export const Page = ({setSlug, slug, page, setPages}) => {
 		const newpage = await fetch(apiURL + '/wiki/' + page.slug)
 		let data = await newpage.json();
 		
+		console.log(slug)
 		console.log(data);
 		setPages(data);
 

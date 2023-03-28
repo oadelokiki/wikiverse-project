@@ -12,6 +12,7 @@ export const App = () => {
 
 	const [slug, setSlug]	= useState("");
 	
+	
 
 	async function fetchPages(){
 		try {
@@ -39,7 +40,12 @@ export const App = () => {
 		<main>	
       <h1>WikiVerse</h1>
 			<h2>An interesting 📚</h2>
-		{slug ? <h2>{pages}</h2>
+
+		<h2>{(slug != "") ? "this works" : "no it doesnt"}</h2>
+		{(pages.id != null) ?<div> <h2>Title: {pages.title}</h2>
+			<p>Content: {pages.content}</p>
+			<p>Author: {pages.author.name}</p>
+			</div>
 			:
 			<PagesList setPages={setPages} slug={slug} setSlug={setSlug} pages={pages} />}
 		</main>
