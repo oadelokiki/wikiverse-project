@@ -8,7 +8,7 @@ export const Page = ({setSlug, slug, page, setPages}) => {
 	async function loadPage() {
 
 	try{
-		await setSlug(page.slug)	
+		setSlug(page.slug)	
 
 		console.log("Page level state of slug: " + slug)
 		console.log("What the current slug should be: " + page.slug)
