@@ -107,7 +107,7 @@ export const App = () => {
                 setTags("");
 
 		setIsAddingAnItem(false)
-
+		loadHomePage()
 
 	}
 
