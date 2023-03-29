@@ -8,3 +8,97 @@ main {
   padding: 1rem;
   height: 100vh;
 }
+
+@keyframes firstanim {
+	0%{
+		transform: scale(2, 0) rotate(1.0turn);
+	}
+	50%{
+		transform: scale(1, 1) rotate(2.0turn);
+	}
+
+	100%{
+		 transform: scale(2, 0) rotate(-1.0turn);
+	}
+}
+
+button{
+
+	animation-name: firstanim;
+	animation-duration: 2s;
+
+}
+
+body{
+
+}
+
+main{
+	text-align: center;
+	background-color: slategrey;
+	font-size: 2vw;
+	transition: all .3s ease-out 50ms;
+	margin: .1vw;
+	width:100%
+}
+#titleanimationbox:hover{
+	transform: scale(2.0, 2.0)
+
+}
+
+#mainnav{
+
+	background-color: transparent;
+
+	transition: all	2s ease-out 100ms;
+
+}
+
+#mainnav:hover{
+
+	transform: scale(1.45, 1.45) translate(0vw, 10vw);
+
+
+}
+
+#maincontent{
+
+
+
+	font-size: 10vw;
+
+	z-index: 101;
+
+}
+#agentimage{
+	transition: all 1s ease-out 1ms;
+	margin : .1vw;
+	height: 15vw;
+	width: 15vw;
+
+	background: transparent;
+}
+#agentimage:hover{
+	transform: scale(1.2, 1.2) rotate(1.0turn) ;
+}
+
+#maincontainer{
+	background-color: transparent;
+	z-index: 100;
+	color: lightblue;
+}
+
+#mainfooter{
+	background-color: transparent;
+	margin: 1vw
+}
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  /* Preserve aspect ratio */
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
