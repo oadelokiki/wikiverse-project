@@ -14,11 +14,11 @@ export const App = () => {
 	
 	
 
-	async function fetchPages(){
+	async function fetchPages(slug2 = slug){
 		try {
-			console.log("Top level state of slug: " + slug)
+			console.log("Top level state of slug: " + slug2)
 
-			const response = await fetch(`${apiURL}/wiki/${slug}`);
+			const response = await fetch(`${apiURL}/wiki/${slug2}`);
 			
 			const pagesData = await response.json();
 
@@ -28,17 +28,33 @@ export const App = () => {
 			console.log("Oh no an error! ", err)
 		}
 	}
+	
+	async function loadHomePage(){
+		try{
+			let homePageData = await fetch(`${apiURL}/wiki`)
 
+			let homePagesData = await homePageData.json();
+
+			setPages(homePagesData);
+
+			setSlug("")
+		}
+		catch(err)
+		{
+			console.log(err)
+		}
+	}
 	
 	useEffect(() => {
-                fetchPages();
+                fetchPages(slug);
         }, []);
 	
 
 	
 	return (
 		<main>	
-      <h1>WikiVerse</h1>
+			<script src="http://localhost:8097"></script>
+		<h1>WikiVerse</h1>
 			<h2>An interesting 📚</h2>
 
 		<h2>{(slug != "") ? "this works" : "no it doesnt"}</h2>
@@ -49,9 +65,8 @@ export const App = () => {
 			<p>Content: {pages.content}</p>
 			<p>Tags: {pages.tags.map((tag) =>{return  <li> {tag.name} </li>} ) } </p>
 			<p>Time Created: {pages.createdAt}</p> 
-//maybe I need a function that's gonna fetch the original Pages , seeing as they're taking two attempts to grab now
-			//
-			<p><button onClick= {async () => { fetchPages() ; setSlug("") }}>Back to Wiki List</button></p>
+
+			<p><button onClick= {() => loadHomePage()}>Back to Wiki List</button></p>
 			</div>
 			:
 			<PagesList setPages={setPages} slug={slug} setSlug={setSlug} pages={pages} />}
