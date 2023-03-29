@@ -28,9 +28,11 @@ export const Page = ({setSlug, slug, page, setPages}) => {
 	}	
 
   return <>
+	<li>
     <button onClick = {() => loadPage()}> 
 		<h3> {page.title} </h3> 
 	</button>
+	</li>
   </>
 } 
 	

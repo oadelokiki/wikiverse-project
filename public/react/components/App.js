@@ -14,6 +14,14 @@ export const App = () => {
 	const [slug, setSlug]	= useState("");
 //controls state for the "add an item" pop-up form
 	const [isAddingAnItem, setIsAddingAnItem] = useState(false);
+//these control states for the form inputs
+	
+	const [title, setTitle] = useState("")
+        const [content, setContent] = useState("")
+        const [name, setName] = useState("")
+        const [email, setEmail] = useState("")
+//TODO While tags will be given to us as a string, the string should be .split / delimited on spaces and/or mapped to an array.
+	const [tags, setTags] = useState("")
 
 	async function fetchPages(slug2 = slug){
 		try {
@@ -52,9 +60,25 @@ export const App = () => {
 	
 
 	const handleSubmit = (e) => {
+		//what I'm gonna want to do here, is preveent default behavior
+		//create a nice post request using the fetch api
+		//expect some response from my server ? make a state change that lets my user know the status of their submission
+		//send the user back to the wiki??
+		//OR
+		//Let them add another item 
 		e.preventDefault()
-		console.log(e)
+		console.log(e.values)
+
+		setName(name);
+		setTitle(title);
+		setContent(content);
+		setEmail(email);
+		setTags(tags);
+
+		console.log(name);
 	}
+
+
 
 	const addOrListPages = () => {
 		const result = (isAddingAnItem == false) ? <div> <PagesList setPages={/*where I load all articles*/setPages} slug={slug} setSlug={setSlug} pages={pages} /> <button onClick = {() => {setIsAddingAnItem(true); console.log(isAddingAnItem)} }> Add an item </button>  <button onClick = {() => {setIsAddingAnItem(false); loadHomePage()}}> Back to Wiki</button>
@@ -64,9 +88,12 @@ export const App = () => {
 				<form onSubmit={handleSubmit}>
 
 
-                                	<input></input>
-                                	<input></input>
-                                	<input></input>
+                                	<input onChange = {(e) => setTags(e.target.value)} placeholder="tags" value= {tags}></input>
+					<input onChange = {(e) => setTitle(e.target.value)} placeholder="title"  value = {title}></input>
+					<input onChange = {(e) => setContent(e.target.value)} placeholder="content"  value = {content}></input>
+                                	<input onChange = {(e) => setName(e.target.value)} placeholder="name" value = {name}></input>
+                                	<input onChange = {(e) => setEmail(e.target.value)} placeholder="email" value = {email}></input>
+					
 					<div> 
  
 						<input type="submit" value="Add This Item"></input>
@@ -85,7 +112,7 @@ export const App = () => {
 		<main>	
 			<script src="http://localhost:8097"></script>
 		<h1>WikiVerse</h1>
-			<h2>An interesting 📚</h2>
+			<h2>An OLUS Project 📚</h2>
 
 
 
