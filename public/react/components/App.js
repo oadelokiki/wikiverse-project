@@ -140,6 +140,18 @@ export const App = () => {
 	
 	const toAddOrNotToAdd = addOrListPages();
 
+	const deletePost = async (slug3) => {
+
+		const response = await fetch(`${apiURL}/wiki/${slug3}`, {
+			method: "DELETE"
+		});
+
+		const data = await response.json();
+		setSlug("")
+		loadHomePage();
+
+	}
+
 	return (
 
 		<main>	
@@ -157,7 +169,7 @@ export const App = () => {
 			<p>Time Created: {pages.createdAt}</p> 
 
 			<button onClick = {() => {setIsAddingAnItem(false); loadHomePage()}}> Back to Wiki</button>
-
+			<button onClick = {() => deletePost(slug)}>DELETE ME</button>
 			</div>
 
 			:
