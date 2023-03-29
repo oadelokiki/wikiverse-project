@@ -57,7 +57,8 @@ export const App = () => {
 	}
 
 	const addOrListPages = () => {
-		const result = (isAddingAnItem == false) ? <div> <PagesList setPages={/*where I load all articles*/setPages} slug={slug} setSlug={setSlug} pages={pages} /> <button onClick = {() => {setIsAddingAnItem(true); console.log(isAddingAnItem)} }> Add an item </button> </div> 
+		const result = (isAddingAnItem == false) ? <div> <PagesList setPages={/*where I load all articles*/setPages} slug={slug} setSlug={setSlug} pages={pages} /> <button onClick = {() => {setIsAddingAnItem(true); console.log(isAddingAnItem)} }> Add an item </button>  <button onClick = {() => {setIsAddingAnItem(false); loadHomePage()}}> Back to Wiki</button>
+</div> 
                                 :
                         <div>
 				<form onSubmit={handleSubmit}>
@@ -95,8 +96,10 @@ export const App = () => {
 			<p>Tags: {pages.tags.map((tag) =>{return  <li> {tag.name} </li>} ) } </p>
 			<p>Time Created: {pages.createdAt}</p> 
 
-			
+			<button onClick = {() => {setIsAddingAnItem(false); loadHomePage()}}> Back to Wiki</button>
+
 			</div>
+
 			:
 
 			<div>
