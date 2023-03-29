@@ -59,7 +59,7 @@ export const App = () => {
         }, []);
 	
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		//what I'm gonna want to do here, is preveent default behavior
 		//create a nice post request using the fetch api
 		//expect some response from my server ? make a state change that lets my user know the status of their submission
@@ -74,8 +74,41 @@ export const App = () => {
 		setContent(content);
 		setEmail(email);
 		setTags(tags);
+		
+		console.log(tags)
+		console.log(typeof(tags))
+		
 
-		console.log(name);
+		const articleData = {
+			title: title,
+			name: name,
+			content: content,
+			email: email,
+			tags : tags,
+		}
+
+		const response = await fetch(`${apiURL}/wiki/`, {
+			method:"POST",
+			headers: {
+				'Content-Type':'application/json'
+			},
+			body: JSON.stringify(
+				articleData 
+			)
+		});
+	
+		const data = await response.json();
+		console.log(data);
+
+		setName("");
+                setTitle("");
+                setContent("");
+                setEmail("");
+                setTags("");
+
+		setIsAddingAnItem(false)
+
+
 	}
 
 
