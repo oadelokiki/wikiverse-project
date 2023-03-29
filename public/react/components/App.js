@@ -87,7 +87,7 @@ export const App = () => {
 		<h1>WikiVerse</h1>
 			<h2>An interesting 📚</h2>
 
-		<h2>{(slug != "") ? "this works" : "no it doesnt"}</h2>
+
 
 		<h2>{(pages.id != null) ? <div> <h2>Title: {pages.title}</h2>
 
